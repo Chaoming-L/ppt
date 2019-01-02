@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet"
+        href="css/reveal.css">
+  <link rel="stylesheet"
+        href="css/theme/black.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet"
+        href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown>
+        ### 配送单打印原理,及案例分析
+      </section>
+      <section data-markdown>
+        ### 配送单打印异常分[3类](/)
+        * 配置模板有问题
+        * 打印机配置有问题
+        * 代码写了bug
+      </section>
+      <section>
+        如何排查问题?
+      </section>
+      <section data-markdown>
+        ## 首先
+        要理解,配送单模板[原理](https://station.guanmai.cn/station/new#/system/setting/order_printer/template_editor?template_id=1399)
+      </section>
+      <section>
+        <section data-markdown>
+          打印数据异常,2步走:
+          1. 看模板配置是否正确?👇
+          2. 通过chrome的*检查*(按F12 => network)查看后台数据返回是否有误.
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/data.png)
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          打印尺寸异常,4步走:
+          1. 确定模板尺寸设置正确(例如:241纸用的是哪个尺寸?)
+          2. 确定打印配置正确(例如:新建表单为何没法选中?)
+          3. 以上两个都正确,查看打印预览是否有问题👇?
+          4. 以上都没问题,可能打印机硬件问题.
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/print.png)
+        </section>
+      </section>
+      <section data-markdown>
+        ### 最后,列举几个案例
+      </section>
+      <section>
+        <section data-markdown>
+          打印机入纸不正确👇
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/jin1.JPG)
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/jin2.JPG)
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          打印内容超出范围👇
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/super.JPG)
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/window.JPG)
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          部分纸张空白👇
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/blank.JPG)
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          商品备注过长,导致换页👇
+        </section>
+        <section data-markdown>
+          ![预览](/Users/damon/Documents/MD/peisong/beizhu.png)
+        </section>
+      </section>
+      <section data-markdown>
+        ## 谢谢👏
+        ## 希望能帮到大家排查问题🚀
+      </section>
+    </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [
+        {src: 'plugin/markdown/marked.js'},
+        {src: 'plugin/markdown/markdown.js'},
+        {src: 'plugin/notes/notes.js', async: true},
+        {src: 'plugin/highlight/highlight.js', async: true, callback: function () {hljs.initHighlightingOnLoad();}}
+      ]
+    });
+  </script>
+</body>
+
+</html>
