@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      counter-reset: section;
+    }
+
+    @page {
+      margin: 0;
+    }
+
+    .page {
+      page-break-after: always;
+    }
+
+    .page::after {
+      counter-increment: section;
+      content: "第"counter(section) "页";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    这里是:
+  </div>
+  <div class="page">
+    这里是:
+  </div>
+  <div class="page">
+    这里是:
+  </div>
+</body>
+
+</html>
