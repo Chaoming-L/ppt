@@ -33,44 +33,58 @@
       <section data-markdown>
         ### 配送单打印原理,及案例分析
       </section>
-      <section data-markdown>
-        ### 配送单打印异常分[3类](/)
-        * 配置模板有问题
-        * 打印机配置有问题
-        * 代码写了bug
-      </section>
-      <section>
-        如何排查问题?
-      </section>
-      <section data-markdown>
-        ## 首先
-        要理解,配送单模板[原理](https://station.guanmai.cn/station/new#/system/setting/order_printer/template_editor?template_id=1399)
-      </section>
+
       <section>
         <section data-markdown>
-          打印数据异常,2步走:
-          1. 看模板配置是否正确?👇
-          2. 通过chrome的*检查*(按F12 => network)查看后台数据返回是否有误.
+          ### 1️⃣配置模板主要把握*3*个要点
+          * [打印规格]() 如何选择?
+          * [打印区域]() 如何配置?
+          * [数据字段]() 如何编辑?
         </section>
         <section data-markdown>
+          主要打印规格:
+
+          | | [A4](/) | [241纸](/) | [二分纸](/) |
+          | :----:| :---: | :-----: | :----------: |
+          | 模板 | A4 |自定义(210 x 279.4mm)| 二分纸 |
+          | 表单 | A4 |210 x 279.4 mm | 210 x 139.7 mm |
+        </section>
+        <section data-markdown>
+          打印区域:
+
+          * 页眉,页脚: 展示在 [每一页](/)
+          * 签名: 仅展示在 [最后一页](/)
+          * 普通区域(表格): 根据数据量自动适应
+          * 普通区域(非表格): 占用[固定](/)高度
+        </section>
+        <section data-markdown>
+          字段编辑:
+          * `{{}}` 内的文字是[动态数据](/),谨慎编辑
           ![预览](./peisong/data.png)
         </section>
       </section>
+
       <section>
         <section data-markdown>
-          打印尺寸异常,4步走:
-          1. 确定模板尺寸设置正确(例如:241纸用的是哪个尺寸?)
-          2. 确定打印配置正确(例如:新建表单为何没法选中?)
-          3. 以上两个都正确,查看打印预览是否有问题👇?
-          4. 以上都没问题,可能打印机硬件问题.
+          ### 2️⃣新建打印驱动表单
+          ![预览](./peisong/window.JPG)
         </section>
         <section data-markdown>
-          ![预览](./peisong/print.png)
+          新建表单无法显示?
+          - 只有[主机]()(USB直连打印机的电脑)新建表单才有效
+          - 21cm某些电脑无法识别,改成[21.01cm]()
         </section>
       </section>
+
       <section data-markdown>
-        ### 最后,列举几个案例
+        ### 3️⃣打印预览
+        ![预览](./peisong/print_modal.png)
       </section>
+
+      <section data-markdown>
+        ### 列举几个打印异常案例:
+      </section>
+
       <section>
         <section data-markdown>
           打印机入纸不正确👇
@@ -82,6 +96,7 @@
           ![预览](./peisong/jin2.JPG)
         </section>
       </section>
+
       <section>
         <section data-markdown>
           打印内容超出范围👇
@@ -89,10 +104,9 @@
         <section data-markdown>
           ![预览](./peisong/super.JPG)
         </section>
-        <section data-markdown>
-          ![预览](./peisong/window.JPG)
-        </section>
       </section>
+
+
       <section>
         <section data-markdown>
           部分纸张空白👇
@@ -101,14 +115,17 @@
           ![预览](./peisong/blank.JPG)
         </section>
       </section>
-      <section>
-        <section data-markdown>
-          商品备注过长,导致换页👇
-        </section>
-        <section data-markdown>
-          ![预览](./peisong/beizhu.png)
-        </section>
+
+      <section data-markdown>
+        商品备注过长,导致换页👇
+        ![预览](./peisong/beizhu.png)
       </section>
+
+      <section data-markdown>
+        准确定位异常,对症下药👨‍🔧‍
+        ![异常定位](https://raw.githubusercontent.com/chaoming56/Img_Hub/master/peisong/mind.png)
+      </section>
+
       <section data-markdown>
         ## 谢谢👏
         ## 希望能帮到大家排查问题🚀
@@ -124,6 +141,7 @@
     // - https://github.com/hakimel/reveal.js#configuration
     // - https://github.com/hakimel/reveal.js#dependencies
     Reveal.initialize({
+      pdfMaxPagesPerSlide: 0.5,
       dependencies: [
         {src: 'plugin/markdown/marked.js'},
         {src: 'plugin/markdown/markdown.js'},
